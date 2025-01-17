@@ -23,23 +23,23 @@ if __name__=='__main__':
         # NN_file="NN_files/model_2d_IP_8.pt"
         # NN_file="NN_files/Inverted_Penduluem20.xlsx"
         # NN_file="NN_files/model_2d_simple_5.pt"
-        NN_file="NN_files/Path_following_20.xlsx"
+        NN_file="NN_files/model_Dai.pt"
         # NN_file="NN_files/model_2d_Pedram3.pt"
         eps1=0.01
-        eps2=0.01
-        name="IP_Lyap"
+        eps2=1e-04
+        name="Path_following"
         TH=0.8
-        V=Finding_Lyapunov_function(NN_file,name,eps1,eps2,TH,mode,parallel)
+        # V=Finding_Lyapunov_function(NN_file,name,eps1,eps2,TH,mode,parallel)
         # plot_level_set(V,TH,'green',[21])
-        eps1=0.01
-        eps2=0.01
+        eps1=1e-2
+        eps2=1e-4
         name="IP_BF"
-        TH=0.8
+        TH=3.0
         def random_color():
             return (random.random(), random.random(), random.random())
         # TH=3.14
         # alpha=[0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.18,0.19,0.2,0.3,0.4,0.5,0.6,0.7]
-        alpha=[0.025,0.035,0.045,0.05,0.06,0.07,0.08,0.09,0.1]
+        alpha=[0.003,0.004]
         fig, ax = plt.subplots()
         X=[]
         Y=[]
@@ -47,6 +47,7 @@ if __name__=='__main__':
         time_start=time.time()
         for alph in alpha:
             NN,h,all_hyperplanes,all_bias,W,c,enumerate_poly,D,border_hype,border_bias,zeros=Finding_Barrier(NN_file,name,eps1,eps2,TH,mode,parallel,alph)
+            # zeros=[]
             x,y,z=plot_invariant_set(h,zeros,TH,alph,color=[random_color()])
             X.append(x)
             Y.append(y)
@@ -74,10 +75,10 @@ if __name__=='__main__':
         #    ,[fr'$\alpha={alph}$' for alph in alpha],loc='upper right',fontsize=14)
         # plt.legend(lines, labels)
         # plot_level_set(V,TH,'cyan',[18])
-        # plot_polytope_2D(NN_file,TH)
+        plot_polytope_2D(NN_file,TH)
         plt.title(fr'$\alpha={alpha}$')
-        plt.xlabel('$x_1$')
-        plt.ylabel('$x_2$')
+        plt.xlabel('Distance Error')
+        plt.ylabel('Angle Error')
         plt.show()
         print("Time for four different alphas:",time_end-time_start)
         # Refined_polytope,new_hype,new_bias,A_dyn,B_dyn,all_hype,all_b=updating_BF_LV(NN,h,enumerate_poly,D)
