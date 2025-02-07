@@ -1,0 +1,31 @@
+Metadata-Version: 2.2
+Name: UIS_Module
+Version: 0.1
+Summary: Union of Invariant sets for Safety verification
+Home-page: https://github.com/PouyaSamanipour/UIS
+Author: Pouya Samanipour
+Author-email: psa254@uky.edu
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: numba
+Requires-Dist: torch
+Requires-Dist: scipy
+Requires-Dist: matplotlib
+Requires-Dist: pandas
+Requires-Dist: pycddlib
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# UIS(Union of Invariant Set)
